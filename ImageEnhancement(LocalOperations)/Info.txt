@@ -1,0 +1,36 @@
+Spatial Image Enhancement Techniques
+|→ Point Operations
+|→ Global Operations
+|→ Local Operations
+
+
+        Local Operations
+
+Simple Neighbourhood operations
+|→ Min
+|→ Max
+|→ Median
+
+ 
+Smoothing Spatial Filters
+|→ Averaging Filter  
+|→ Box Averaging Filter
+|→ Gaussian Filter (lowpass filter) [Weighted Averaging Filter]
+
+Formula → e new = ar*bs*ct*du*ev*fw*gx*hy*iz
+
+word mask is also used for filter 
+
+Types of Paddings
+|→ Zero
+|→ White 
+|→ Fixed Value (Gray)
+|→ Replicate
+|→ Mirror/Reflect
+|→ Wrap Around
+
+Correlation & Convolution
+
+Correlation → Sliding the image over the image and direclty multiplying and sum
+
+Convolution → Kernel is flipped (rotated 180°) before sliding 
