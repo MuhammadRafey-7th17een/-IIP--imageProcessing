@@ -1,0 +1,72 @@
+Negative image formula → s = intensity_max - r 
+                         s = (L-1) - r 
+
+
+
+Thresholding formula →  s = 255 if r > threshold
+                        s = 0 if r <= threshold
+
+Image scaling formula → s = a.r where "a" is a  constant 
+
+
+Logarithmetic Transformation formula → s = c*Log(1+r) where "c" is a constant usually 1 
+
+       ↠   Also called “dynamic-range compression / expansion”
+       ↠   The log function grows faster for smaller inputs and slower for larger inputs.
+       ↠   Small input values are spread out in the output (expanded).
+       ↠   Large input values are closer together in the output (compressed).
+       ↠   Low input values (dark pixels) are mapped to a wider range of output values → easier to see differences in shadows.
+       ↠   High input values (bright pixels) are mapped closer together → contrast in bright areas is reduced → compressed.
+       ↠   Dark pixels expanded
+       ↠   Bright pixels compressed
+
+    [0, 10, 20, 30, 50, 200, 220, 255] → orginal range 
+    [0, 110, 165, 190, 220, 244, 248, 255] → after log 
+
+       ↠  Expanded = small differences in input become larger differences in output → easier to see variations
+       ↠  Compressed = differences in input become smaller differences in output → harder to see variations
+       ↠  Log → stretches dark part, squishes bright part
+
+       ↠  Grey levels must be in the range [0.0, 1.0]
+
+
+Power law Transformation formula →  s = c*rᵞ    where c and γ must be positive
+
+        ↠ Also called gamma Transformation
+        ↠ for γ < 1 dark pixels are expanded (Brightned) and bright pixels are slightly compressed
+        ↠ for γ > 1 dark pixels are compressed (Darkned) and bright pixels are expanded
+        ↠ γ < 1 brighten image 
+        ↠ γ > 1 darken image 
+        ↠ gamma > 1 is used in defogging or dehazing
+        ↠ gamma < 1 “lifts the veil” from shadow areas
+
+        1️⃣ Enhancing shadows (details hidden in dark regions)
+
+            Problem: Dark regions are too dark → details are invisible.
+            Solution: Expand dark pixels, compress bright pixels.
+            Effect:
+            Dark pixels are mapped over a wider range → differences in shadows are more visible.
+            Bright pixels are compressed slightly → prevents highlights from blowing out.
+            Example: Gamma < 1 or log transformation.
+
+        2️⃣ Correcting washed-out highlights (fog, haze, or bright areas)
+
+            Problem: Image is brightened or washed out → contrast reduced.
+            Solution: Compress dark pixels, expand bright pixels.
+            Effect:
+            Dark pixels stay darker → shadows regain contrast.
+            Bright pixels are stretched → highlights regain definition.
+            Example: Gamma > 1 or anti-log transformation.
+
+        Expand → make small differences bigger
+        Compress → make differences smaller
+
+ 
+
+    Nearest Neighbour (place the right value in empty sample) and (Nearest original value)
+    Interpolation
+    Bi-linear
+
+
+    Contrast → Difference between darkest region and brightest region
+    
