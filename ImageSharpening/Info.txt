@@ -1,0 +1,76 @@
+Image Sharpening
+
+→ 2nd order derivative is more useful for image enhancement then 1st order
+→ It has stronger response to finer details
+
+
+Sharpening Filter → Laplacian filter (2nd order derivative)
+
+2D kernels =>       0  1 0      0 -1  0
+                    1 -4 1      -1 4 -1                                
+                    0  1 0      0 -1  0
+
+                    
+                    g(x,y) = f(x,y) - laplacian  if center coefficent is negative
+                    g(x,y) = f(x,y) + laplacian if center coefficent is positive
+
+→ Laplacian is also used for edge detection
+
+the kernel 0 -1 0    deals with horizontal and vertical neighbourhoods
+           -1 4 -1
+           0  -1 0 
+
+→ In edge detection sum of kernel is 0 
+
+→ To deal with vertical, horizontal, and diagonal neighbourhoods we use
+        1  1  1
+        1 -8  1
+        1  1  1 kernel 
+
+→ To sharpen image we do Identity + Edge Detection 
+
+            0 -1  0
+            -1 5 -1     is sharpening filter
+            0  -1 0
+
+→UnSharpening
+
+USM (UnSharp Masks)
+
+→To make unsharp masks: 1 → Blur the image 
+                        2 → Subtract Blurred Image from original, this will give mask (original - blur)
+                        3 → Add a weight of the mask to original (original + mask)
+High Boost Filtering →  4 → If mask weight > 1, this is called Hight boost filtering
+
+
+→ Sobel Operators
+
+ →Sobel Operators are first order derivative
+
+
+
+-1 0 1          -1 -1 -1
+-1 0 1  and      0  0  0        are prewitt filters
+-1 0 1           1  1  1
+
+
+ -1 0 1
+ -2 0 2 is horizontal edge
+ -1 0 1
+                                addition of both edges gives filtered image [ mag =√Gx² + Gy² ]
+ -1 -2 -1 
+  0  0  0 is vertical edge
+  1  2  1
+
+
+
+• 1st order derivatives generally produce thicker edges
+• 2nd order derivatives have a stronger response to
+fine detail e.g. thin lines
+• 1st order derivatives have stronger response to grey
+level step
+• 2nd order derivatives produce a double response at
+step changes in grey level
+
+
+ 
